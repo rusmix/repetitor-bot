@@ -1,5 +1,4 @@
 import { TgMessage } from "./types/index";
-import { StringLiteral } from "typescript";
 
 import { Context, Markup, Telegraf } from "telegraf";
 
@@ -351,7 +350,8 @@ export class BotStrategies {
       if ("caption" in message && message.caption.split("")[0] === "/")
 return;
       const userId = String((ctx.message as TgMessage).from.id);
-
+        const date = new Date().getDay();
+        if (date === 6 || date === 7 ) ctx.reply("Ваше сообщение доставлено, но Марк на выходных до понедельника и сможет ответить чуть-чуть позже 🙂")
       console.log(userId);
       console.log(await Users.find());
 
